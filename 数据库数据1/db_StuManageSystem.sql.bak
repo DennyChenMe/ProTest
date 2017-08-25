@@ -1,0 +1,93 @@
+--1.创建student数据库,以下操作创建了数据库，并且创建了相应的文件
+CREATE DATABASE db_StuManageSystem
+ ON 
+ (NAME = StuManageSystem,
+  FILENAME = 'F:\1.科锐学习笔记\第一阶段\第一阶段笔记和作业\com——张延清老师主讲\com作业——张延清老师主讲\三层网络学生管理系统\StuManageSystemServer\数据库数据1\student.mdf',
+  SIZE = 3,
+  MAXSIZE = 10,
+  FILEGROWTH = 10%)
+ LOG ON
+  (NAME = 'StuManageSystem_log',
+   FILENAME = 'F:\1.科锐学习笔记\第一阶段\第一阶段笔记和作业\com——张延清老师主讲\com作业——张延清老师主讲\三层网络学生管理系统\StuManageSystemServer\数据库数据1\student_log.ldf',
+   SIZE = 1MB,
+   MAXSIZE = 5MB,
+   FILEGROWTH = 1MB )
+
+
+--2.创建一张学生管理表并添加字段
+CREATE TABLE db_StuManageSystem.dbo.学生信息表
+(
+  学生学号 VARCHAR(10)  CONSTRAINT StuID_Pri PRIMARY KEY,
+  学生姓名 VARCHAR(10),
+  学生性别 VARCHAR(10),
+  学生身高 FLOAT
+)
+
+--增加学生信息
+INSERT INTO 学生信息表 (学生学号, 学生姓名, 学生性别, 学生身高)
+       VALUES ('001', '陈晓晓', '女', 1.78)
+
+INSERT INTO 学生信息表 (学生学号, 学生姓名, 学生性别, 学生身高)
+       VALUES ('002', '陈明明', '男', 1.80)
+
+INSERT INTO 学生信息表 (学生学号, 学生姓名, 学生性别, 学生身高)
+       VALUES ('003', '黄楠', '女', 1.70)
+
+INSERT INTO 学生信息表 (学生学号, 学生姓名, 学生性别, 学生身高)
+       VALUES ('004', '黄子馨', '女', 1.72)
+
+INSERT INTO 学生信息表 (学生学号, 学生姓名, 学生性别, 学生身高)
+       VALUES ('005', '陈成成', '女', 1.68)
+
+INSERT INTO 学生信息表 (学生学号, 学生姓名, 学生性别, 学生身高)
+       VALUES ('006', '陈赫赫', '男', 1.88)
+
+INSERT INTO 学生信息表 (学生学号, 学生姓名, 学生性别, 学生身高)
+       VALUES ('007', '刘大大', '男', 1.70)
+
+INSERT INTO 学生信息表 (学生学号, 学生姓名, 学生性别, 学生身高)
+       VALUES ('008', '陈二妮', '女', 1.58)
+
+INSERT INTO 学生信息表 (学生学号, 学生姓名, 学生性别, 学生身高)
+       VALUES ('009', '陈名校', '女', 1.68)
+
+INSERT INTO 学生信息表 (学生学号, 学生姓名, 学生性别, 学生身高)
+       VALUES ('010', '陈小泉', '女', 1.61)
+
+--查找学生表信息
+SELECT * FROM 学生信息表
+WHERE 学生姓名 LIKE '黄楠' and 学生学号 > 0 and 学生身高 > 0 and 学生性别 = '男'--LIKE '%%'
+
+UPDATE 学生信息表 SET 学生姓名 = '黑金'
+       WHERE 学生学号 = '004'
+
+UPDATE 学生信息表 SET 学生身高 = '黑金'
+       WHERE 学生学号 = '004'
+/*
+--增加学生信息
+INSERT INTO xscjb (xh, kmbh, fs)
+       VALUES ('001', '1', 90)
+
+
+
+--删除表
+DROP TABLE 学生信息表
+
+--向表中增加一列
+ALTER TABLE 学生信息表
+  ADD course_score MYINT DEFAULT 2
+
+--3.给学生管理表添加字段
+
+
+
+--3.修改数据库student的名称为students:
+--ALTER DATABASE StuManageSystem
+--MODIFY NAME = db_StuManageSystem
+
+--4.删除数据库students:
+--DROP DATABASE db_StuManageSystem
+
+sp_helpdb
+*/
+
